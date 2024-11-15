@@ -37,6 +37,8 @@ const styles = StyleSheet.create({
   default: {
     fontSize: 16,
     lineHeight: 24,
+    fontFamily: 'Rubik',
+    fontWeight: '600',
   },
   defaultSemiBold: {
     fontSize: 16,
@@ -51,6 +53,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 20,
     fontWeight: 'bold',
+    fontFamily: 'Rubik',
   },
   link: {
     lineHeight: 30,
