@@ -1,7 +1,8 @@
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import React = require("react");
 import { Text, View } from "react-native";
-import SQLite from 'react-native-sqlite-storage';
+import * as SQLite from 'react-native-sqlite-storage';
 import {useState, useEffect} from 'react';
 
 const db = SQLite.openDatabase(
