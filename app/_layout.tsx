@@ -1,5 +1,6 @@
 import { Stack } from "expo-router";
 import { useFonts } from 'expo-font';
+import React from 'react';
 
 export default function RootLayout() {
   const [loaded] = useFonts({
