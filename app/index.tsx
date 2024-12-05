@@ -1,10 +1,11 @@
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import React from "react";
-import { Text, View, TextInput, StyleSheet, Pressable } from "react-native";
+import { Text, View, TextInput, StyleSheet, Pressable, Button } from "react-native";
 import {useState, useEffect} from 'react';
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { signup } from "../services/auth"
+
 
 export default function Index() {
 
@@ -19,27 +20,16 @@ export default function Index() {
     text: {
       fontFamily: "Rubik",
       fontWeight: 600,
+    },
+    signup: {
+      margin: 12,
+      borderWidth: 1,
+      padding: 10,
     }
   })
 
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
-
-  const auth = getAuth();
-
-  const createAccount = () => createUserWithEmailAndPassword(auth, email, password)
-
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
 
   return (
     <SafeAreaProvider>
@@ -47,11 +37,9 @@ export default function Index() {
         <Text style={styles.text}>Hello, welcome to</Text>
         <Text style={styles.text}>Pricey</Text>
 
-        <TextInput placeholder="username" style={styles.input}/>
-        <TextInput placeholder="password" style={styles.input}/>
-        <Pressable onPress={createAccount}>
-          <Text>Sign Up</Text>
-        </Pressable>
+        <TextInput placeholder="email" style={styles.input} value={email} onChangeText={onChangeEmail}/>
+        <TextInput placeholder="password" style={styles.input} value={password} onChangeText={onChangePassword}/>
+        <Button title="Sign Up" onPress={() => signup(email, password)} />
 
       </SafeAreaView>
     </SafeAreaProvider>
