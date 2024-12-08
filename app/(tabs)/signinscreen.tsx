@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, TextInput, StyleSheet, Pressable, Button } from "react-native";
 import {useState, useEffect} from 'react';
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { signup } from "../../services/auth";
+import { signin } from "../../services/auth";
 
 
 export default function Index() {
@@ -37,7 +37,7 @@ export default function Index() {
 
         <TextInput placeholder="email" style={styles.input} value={email} onChangeText={onChangeEmail} autoCapitalize="none"/>
         <TextInput placeholder="password" style={styles.input} value={password} onChangeText={onChangePassword} autoCapitalize="none"/>
-        <Button title="Sign Up" onPress={() => signup(email, password)} />
+        <Button title="Sign Up" onPress={() => signin(email, password)} />
 
       </SafeAreaView>
     </SafeAreaProvider>
