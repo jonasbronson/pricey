@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-
 // Load environment variables from .env file
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -10,13 +9,15 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-    apiKey: `${process.env.FIREBASE_API_KEY}`,
+    apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
     authDomain: "pricey-7488a.firebaseapp.com",
     projectId: "pricey-7488a",
     storageBucket: "pricey-7488a.firebasestorage.app",
-    messagingSenderId: `${process.env.MESSAGING_SENDER_ID}`,
-    appId: `${process.env.APP_ID}`,
-    measurementId: `${process.env.MEASUREMENT_ID}`
+    /* I have no idea why this doesn't work, but as of now, I don't need it for the app to function :)
+    messagingSenderId: EXPO_PUBLIC_MESSAGING_SENDER_ID,
+    appId: EXPO_PUBLIC_APP_ID,
+    measurementId: EXPO_PUBLIC_MEASUREMENT_ID,
+    */
   };
   
   // Initialize Firebase

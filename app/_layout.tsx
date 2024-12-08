@@ -1,8 +1,6 @@
 import { Stack } from "expo-router";
 import { useFonts } from 'expo-font';
 import React from 'react';
-import { app } from '../services/firebaseConfig';
-import { getAuth } from "firebase/auth";
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import * as SplashScreen from 'expo-splash-screen';
@@ -24,8 +22,6 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
-
-  const auth = getAuth(app);
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
