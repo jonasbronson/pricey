@@ -39,6 +39,8 @@ export default function Index() {
         <TextInput placeholder="password" style={styles.input} value={password} onChangeText={onChangePassword} autoCapitalize="none"/>
         <Button title="Sign Up" onPress={() => signin(email, password)} />
 
+          <Text></Text>
+
       </SafeAreaView>
     </SafeAreaProvider>
     

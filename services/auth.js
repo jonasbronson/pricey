@@ -1,5 +1,6 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, } from "firebase/auth";
-import { auth } from "./firebaseConfig";
+import { auth, db } from "./firebaseConfig";
+import { doc, setDoc } from "firebase/firestore"; 
 
 createUserWithEmailAndPassword(auth, email, password)
 .then((userCredential) => {
@@ -29,7 +30,6 @@ signInWithEmailAndPassword(auth, email, password)
 
 const email = "";
 const password = "";
-const uid = "";
 
 const signup = async (email, password) => {
     try{
@@ -39,11 +39,12 @@ const signup = async (email, password) => {
 
         const user = userCredential.user;
 
-        console.log("user registered");
+        await setDoc(doc(db, 'users', user.uid), {
+              email: user.email,
+            });
     }
     catch (error) {
-        console.log("sign up error");
-        return error;
+        console.log(error);
     }
 }
 
@@ -51,10 +52,28 @@ const signin = async (email, password) => {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        console.log("User signed in:" , user)
+
     }
     catch (error) {
         console.log("sign in error");
+    }
+}
+
+const onUserUpdate = () => {
+    const user = auth.currentUser;
+
+    if(user !== null)
+    {
+        const displayName = user.displayName;
+        const email = user.email;
+        const photoURL = user.photoURL;
+        const emailVerified = user.emailVerified;
+
+        // The user's ID, unique to the Firebase project. Do NOT use
+        // this value to authenticate with your backend server, if
+        // you have one. Use User.getToken() instead.
+        const uid = user.uid;
+
     }
 }
 
