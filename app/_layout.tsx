@@ -10,7 +10,8 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   const [loaded] = useFonts({
-    Rubik: require('../assets/fonts/Rubik-VariableFont_wght.ttf'),
+    Oranienbaum: require('../assets/fonts/Oranienbaum-Regular.ttf'),
+    Lexend: require('../assets/fonts/Lexend-Regular.ttf'),
   });
 
   useEffect(() => {

@@ -21,8 +21,7 @@ export default function Index() {
       margin: 12,
     },
     text: {
-      fontFamily: "Rubik",
-      fontWeight: 600,
+      fontFamily: "Oranienbaum",
     },
     signup: {
       margin: 12,

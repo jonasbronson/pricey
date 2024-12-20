@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'expo-router';
 import { Text, View, TextInput, StyleSheet, Pressable, Button } from "react-native";
 import {useState, useEffect} from 'react';
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
@@ -16,8 +17,7 @@ export default function Index() {
       margin: 12,
     },
     text: {
-      fontFamily: "Rubik",
-      fontWeight: 600,
+      fontFamily: "Oranienbaum",
     },
     signup: {
       margin: 12,
@@ -37,9 +37,12 @@ export default function Index() {
 
         <TextInput placeholder="email" style={styles.input} value={email} onChangeText={onChangeEmail} autoCapitalize="none"/>
         <TextInput placeholder="password" style={styles.input} value={password} onChangeText={onChangePassword} autoCapitalize="none"/>
+
+        <Link href='/(tabs)/registerscreen'>Don't have an account? Sign up.</Link>
+
         <Button title="Sign Up" onPress={() => signin(email, password)} />
 
-          <Text></Text>
+        <Text></Text>
 
       </SafeAreaView>
     </SafeAreaProvider>
