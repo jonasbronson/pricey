@@ -1,6 +1,14 @@
 import {getAuth, signOut} from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc, getDoc } from "firebase/firestore"; 
 import {db} from "./firebaseConfig";
+
+//#region 
+
+const getEmail = async () => {
+  
+}
+
+//#endregion
 
 const handleSignOut = async () => {
     try {
@@ -24,4 +32,4 @@ const addUserToDatabase = async (user) => {
   }
 }
   
-  export {handleSignOut, addUserToDatabase};
+export {handleSignOut, addUserToDatabase};

@@ -52,14 +52,13 @@ const signin = async (email, password) => {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-
     }
     catch (error) {
         console.log("sign in error");
     }
 }
 
-const onUserUpdate = () => {
+/*const onUserUpdate = () => {
     const user = auth.currentUser;
 
     if(user !== null)
@@ -75,6 +74,6 @@ const onUserUpdate = () => {
         const uid = user.uid;
 
     }
-}
+}*/
 
 export{ signin, signup }

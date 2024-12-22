@@ -9,7 +9,6 @@ import { getAuth } from "firebase/auth";
 
 export default function TabLayout() {
 
-  const auth = getAuth(app);
 
   return (
     <Tabs>
