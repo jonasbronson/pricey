@@ -15,6 +15,9 @@ export default function Index() {
             <Pressable onPress={handleSignOut}>
               <Text>Sign Out</Text>
             </Pressable>
+            <Pressable onPress={handleSignOut}>
+              <Text>Delete my account</Text>
+            </Pressable>
           </SafeAreaView>
         </SafeAreaProvider>
     

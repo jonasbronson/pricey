@@ -10,23 +10,12 @@ import { auth } from '../services/firebaseConfig';
 
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
   const [user, onChangeUser] = React.useState<User | null>(null);
 
   const [loaded] = useFonts({
     Oranienbaum: require('../assets/fonts/Oranienbaum-Regular.ttf'),
     Lexend: require('../assets/fonts/Lexend-Regular.ttf'),
   });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -46,13 +35,20 @@ export default function RootLayout() {
     return () => unsubscribe();
   }, []); // Empty dependency array means this effect runs once on mount
 
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
-    </ThemeProvider>
   );
 }
 

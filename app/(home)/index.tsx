@@ -6,20 +6,14 @@ import {useState, useEffect} from 'react';
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { signup } from "../../services/auth";
 import { addUserToDatabase } from "../../services/firebaseFunctions";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { auth } from "@/services/firebaseConfig";
 
 
 export default function Index() {
 
   const styles = StyleSheet.create({
-    input: {
-      color: "white",
-      borderWidth: 1,
-      height: 40,
-      padding: 10,
-      margin: 12,
-    },
-    text: {
+    header: {
       fontFamily: "Oranienbaum",
     },
     signup: {
@@ -29,15 +23,25 @@ export default function Index() {
     }
   })
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (!user) {
+        router.replace('/(user)/signinscreen');
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <SafeAreaProvider>
       <SafeAreaView>
-        <Text style={styles.text}>Hello, welcome to</Text>
-        <Text style={styles.text}>Pricey</Text>
+        <Text style={styles.header}>Hello, welcome to</Text>
+        <Text style={styles.header}>Pricey</Text>
         <Text>hello</Text>
-        {/* <Pressable onPress={() => addUserToDatabase(user)}>
+        <Pressable onPress={() => addUserToDatabase(auth.currentUser)}>
           <Text>Add to database</Text>
-        </Pressable> */}
+        </Pressable>
         <Link href='/(user)/account' asChild>
           <Pressable>
             <Text>See user</Text>
@@ -45,6 +49,5 @@ export default function Index() {
         </Link>
       </SafeAreaView>
     </SafeAreaProvider>
-
   );
 }

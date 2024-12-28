@@ -1,6 +1,7 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, } from "firebase/auth";
 import { auth, db } from "./firebaseConfig";
 import { doc, setDoc } from "firebase/firestore"; 
+import { router } from "expo-router";
 
 createUserWithEmailAndPassword(auth, email, password)
 .then((userCredential) => {
@@ -31,7 +32,7 @@ signInWithEmailAndPassword(auth, email, password)
 const email = "";
 const password = "";
 
-const signup = async (email, password) => {
+const signup = async (firstName, lastName, email, password) => {
     try{
         console.log(auth);
 
@@ -40,8 +41,12 @@ const signup = async (email, password) => {
         const user = userCredential.user;
 
         await setDoc(doc(db, 'users', user.uid), {
-              email: user.email,
-            });
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+        });
+
+        router.replace('/(home)')
     }
     catch (error) {
         console.log(error);
@@ -52,6 +57,7 @@ const signin = async (email, password) => {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
+        router.replace('/(home)')
     }
     catch (error) {
         console.log("sign in error");
