@@ -3,6 +3,7 @@ import { Text, View, TextInput, StyleSheet, Pressable, Button } from "react-nati
 import {useState, useEffect} from 'react';
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { signup } from "../../services/auth";
+import { Link } from 'expo-router';
 
 
 export default function Index() {
@@ -40,6 +41,9 @@ export default function Index() {
         <TextInput placeholder="last name" style={styles.input} value={lastName} onChangeText={onChangeLastName}/>
         <TextInput placeholder="email" style={styles.input} value={email} onChangeText={onChangeEmail} autoCapitalize="none"/>
         <TextInput placeholder="password" style={styles.input} value={password} onChangeText={onChangePassword} autoCapitalize="none"/>
+
+        <Text>Already have an account?</Text><Link href='/(user)/signinscreen'>Sign in.</Link>
+
         <Button title="Sign Up" onPress={() => signup(firstName, lastName, email, password)} />
 
       </SafeAreaView>

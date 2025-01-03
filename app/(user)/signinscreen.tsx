@@ -38,7 +38,7 @@ export default function Index() {
         <TextInput placeholder="email" style={styles.input} value={email} onChangeText={onChangeEmail} autoCapitalize="none"/>
         <TextInput placeholder="password" style={styles.input} value={password} onChangeText={onChangePassword} autoCapitalize="none"/>
 
-        <Link href='/(user)/registerscreen'>Don't have an account? Sign up.</Link>
+        <Text>Don't have an account?</Text><Link href='/(user)/registerscreen'>Sign up.</Link>
 
         <Button title="Sign In" onPress={() => signin(email, password)} />
 
