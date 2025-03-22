@@ -47,6 +47,12 @@ export default function Index() {
             <Text>See user</Text>
           </Pressable>
         </Link>
+
+        <Link href='/(addedit)/method' asChild>
+          <Pressable>
+            <Text>Add new payment method</Text>
+          </Pressable>
+        </Link>
       </SafeAreaView>
     </SafeAreaProvider>
   );
