@@ -51,6 +51,8 @@ export default function RootLayout() {
         <Stack.Screen name="(user)/account" options={{headerShown: false}}/>
         <Stack.Screen name="(user)/registerscreen" options={{headerShown: false}}/>
         <Stack.Screen name="(user)/signinscreen" options={{headerShown: false}}/>
+        <Stack.Screen name="(addedit)/method" options={{headerShown: false}}/>
+        <Stack.Screen name="(addedit)/transaction" options={{headerShown: false}}/>
         <Stack.Screen name="+not-found" />
       </Stack>
   );
