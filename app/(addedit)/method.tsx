@@ -10,6 +10,7 @@ const data = [
     { label: 'Debit card', value: '2' },
     { label: 'Checking account', value: '3' },
     { label: 'Savings account', value: '4' },
+    { label: 'Online account', value: '5' },
   ];
 
 export default function Index() {

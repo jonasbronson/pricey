@@ -53,6 +53,12 @@ export default function Index() {
             <Text>Add new payment method</Text>
           </Pressable>
         </Link>
+
+        <Link href='/(addedit)/transaction' asChild>
+          <Pressable>
+            <Text>Add transaction</Text>
+          </Pressable>
+        </Link>
       </SafeAreaView>
     </SafeAreaProvider>
   );
